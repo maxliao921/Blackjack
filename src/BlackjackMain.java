@@ -169,142 +169,133 @@ public class BlackjackMain {
     }
 
     // Check user for blackjack
-public static boolean hasBlackJack(int handValue)
-{
-    if(handValue==21)
+    public static boolean hasBlackJack(int handValue)
     {
-        return true;
-    }
-    return false;
-}
-/*
- * Calculates the value of a player's hand.
- */
-public static int calcHandValue(List<Card> hand)
-{
-    Card[] aHand = new Card[]{};
-    aHand = hand.toArray(aHand);
-    int handvalue=0;
-    for(int i=0; i<aHand.length; i++)
-    {
-        handvalue += aHand[i].getValue();
-        if(aHand[i].getValue()==11)
+        if(handValue == 21)
         {
-            AceCounter++;
+            return true;
         }
-        while(AceCounter>0 && handvalue>21)
-        {
-            handvalue-=10;
-            AceCounter--;
-        }
+        return false;
     }
-    return handvalue;
-}
-/*
- * Asks the user how much he or she would like to bet.
- */
-public static int Bet(int cash)
-{
-    Scanner sc=new Scanner(System.in);
-    int bet=sc.nextInt();
-    while(bet>cash)
+    
+    // Calculate value of user's hand
+    public static int calcHandValue(List<Card> hand)
     {
-        System.out.println("You cannot bet more cash than you have!");
-        System.out.println("How much would you like to bet?");
-        bet=sc.nextInt();
-    }
-    return bet;
-}
-/*
- * Called if the user wins.
- */
-public static void Win()
-{
-    System.out.println("Congratulations, you win!");
-    cash=cash+bet;
-    System.out.println("Cash: "+cash);
-}
-/*
- * Called if the user loses.
- */
-public static void Lose()
-{
-    System.out.println("Sorry, you lose!");
-    cash=cash-bet;
-    System.out.println("Cash: "+cash);
-}
-/*
- * Called if the user pushes
- */
-public static void Push()
-{
-    System.out.println("It's a push!");
-    System.out.println("You get your money back.");
-    System.out.println("Cash: "+cash);
-}
-/*
- * Adds a card to user's hand and calculates the value of that hand. Aces are taken into account.
- */
-public static void Hit(Deck deck, List<Card> hand)
-{
-    hand.add(deck.drawCard());
-    Card[] aHand = new Card[]{};
-    aHand = hand.toArray(aHand);
-    handvalue = 0;
-    for(int i=0; i<aHand.length; i++)
-    {
-        handvalue += aHand[i].getValue();
-        if(aHand[i].getValue()==11)
+        Card[] aHand = new Card[]{};
+        aHand = hand.toArray(aHand);
+        int handvalue = 0;
+        for(int i = 0; i < aHand.length; i++)
         {
-            AceCounter++;
+            handvalue += aHand[i].getValue();
+            if(aHand[i].getValue()==11)
+            {
+                AceCounter++;
+            }
+            while(AceCounter > 0 && handvalue > 21)
+            {
+                handvalue -= 10;
+                AceCounter--;
+            }
         }
-        while(AceCounter>0 && handvalue>21)
+        return handvalue;
+    }
+    
+    // Ask user for bet
+    public static int Bet(int cash)
+    {
+        Scanner sc = new Scanner(System.in);
+        int bet = sc.nextInt();
+        while(bet > cash)
         {
-            handvalue-=10;
-            AceCounter--;
+            System.out.println("You cannot bet more cash than you have!");
+            System.out.println("How much would you like to bet?");
+            bet = sc.nextInt();
+        }
+        return bet;
+    }
+    
+    // If user wins
+    public static void Win()
+    {
+        System.out.println("Congratulations, you win!");
+        cas h= cash+bet;
+        System.out.println("Cash: " + cash);
+    }
+
+    // If user loses
+    public static void Lose()
+    {
+        System.out.println("Sorry, you lose!");
+        cash = cash - bet;
+        System.out.println("Cash: " + cash);
+    }
+
+    // If user pushes
+    public static void Push()
+    {
+        System.out.println("It's a push!");
+        System.out.println("You get your money back.");
+        System.out.println("Cash: " + cash);
+    }
+
+    // Adds card to user's hand
+    public static void Hit(Deck deck, List<Card> hand)
+    {
+        hand.add(deck.drawCard());
+        Card[] aHand = new Card[]{};
+        aHand = hand.toArray(aHand);
+        handvalue = 0;
+        for(int i = 0; i < aHand.length; i++)
+        {
+            handvalue += aHand[i].getValue();
+            if(aHand[i].getValue() == 11)
+            {
+                AceCounter++;
+            }
+            while(AceCounter > 0 && handvalue > 21)
+            {
+                handvalue -= 10;
+                AceCounter--;
+            }
         }
     }
-}
-/*
- * Determines if a user has input hit or stand.
- */
-public static boolean isHitorStand(String hitter)
-{
-    if(hitter.equals("hit") || hitter.equals("stand"))
+
+    // Dtermine hit and stand
+    public static boolean isHitorStand(String hitter)
     {
-        return true;
+        if(hitter.equals("hit") || hitter.equals("stand"))
+        {
+            return true;
+        }
+        return false;
     }
-    return false;
-}
-/*
- * Determines if a user has busted.
- */
-public static boolean checkBust(int handvalue)
-{
-    if(handvalue>21)
+
+    // Determine if user is busted
+    public static boolean checkBust(int handvalue)
     {
-        System.out.println("You have busted!");
-        return true;
+        if(handvalue > 21)
+        {
+            System.out.println("You have busted!");
+            return true;
+        }
+        return false;
     }
-    return false;
-}
-/*
- * Determines if a user has input yes or no.
- */
-public static boolean isyesorno(String answer)
-{
-    if(answer.equals("yes") || answer.equals("no"))
+
+    // Determine yes or no
+    public static boolean isyesorno(String answer)
     {
-        return true;
+        if(answer.equals("yes") || answer.equals("no"))
+        {
+            return true;
+        }
+        return false;
     }
-    return false;
-}
-/*
- * Called if the user has a five card trick.
- */
-public static void fivecardtrick()
-{
-    System.out.println("You have achieved a five card trick!");
-    Win();
-}
+
+    // If user has a five card trick
+    public static void fivecardtrick()
+    {
+        System.out.println("You have achieved a five card trick!");
+        Win();
+    }
+    
 }
