@@ -2,7 +2,6 @@ package Blackjack;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-// Creates the dealer
 class Dealer {
     // Variables
     ArrayList<Card> hand; // The dealer's hand
@@ -10,7 +9,8 @@ class Dealer {
     private Card[] aHand; // Convert the dealer's hand to an array
     private int AceCounter; // Counts aces in dealer's hand
 
-    Dealer(Deck deck)
+    // Creates the dealer
+    public Dealer(Deck deck)
     {
         hand = new ArrayList<>();
         aHand = new Card[]{};
