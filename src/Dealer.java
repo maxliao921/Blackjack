@@ -86,47 +86,45 @@ class Dealer {
     }
 
     // Print dealer's hand
-public void showHand()
-{
-    System.out.println(hand);
-}
-/*
- * Returns the value of the dealer's hand.
- */
-public int getHandValue()
-{
-    return handvalue;
-}
-/*
- * Determines if a dealer has busted.
- */
-public boolean busted(int handvalue)
-{
-    if(handvalue>21)
+    public void showHand()
     {
-        System.out.println("The dealer busted!");
-        return true;
+        System.out.println(hand);
     }
-    return false;
-}
-/*
- * Takes the turn for the dealer and returns the value of his hand.
- */
-public int takeTurn(Deck deck)
-{
-    while(wantsToHit())
+
+    // Value of dealer's hand
+    public int getHandValue()
     {
-        System.out.println("The dealer hits");
-        Hit(deck);
-        if(busted(handvalue))
+        return handvalue;
+    }
+
+    // If dealer's hand is over 21
+    public boolean busted(int handvalue)
+    {
+        if(handvalue > 21)
         {
-            break;
+            System.out.println("The dealer busted!");
+            return true;
         }
+        return false;
     }
-    if(handvalue<=21)
+
+    // Takes the dealer's turn
+    public int takeTurn(Deck deck)
     {
-        System.out.print("The dealer stands.");
+        while(wantsToHit())
+        {
+            System.out.println("The dealer hits");
+            Hit(deck);
+            if(busted(handvalue))
+            {
+                break;
+            }
+        }
+        if(handvalue <= 21)
+        {
+            System.out.print("The dealer stands.");
+        }
+        return handvalue;
     }
-    return handvalue;
-}
+    
 }
