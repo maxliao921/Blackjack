@@ -20,7 +20,7 @@ class Card {
     // Returns card as string
     public String toString()
     {
-        return ranks[rank]+" of "+suits[suit];
+        return ranks[rank] + " of " + suits[suit];
     }
     
     // Returns card rank
@@ -38,17 +38,17 @@ class Card {
     // Returns value of card, 11 for jack, queen, king, or ace
     public int getValue()
     {
-        if(rank>10)
+        if (rank > 10)
         {
-            value=10;
+            value = 10;
         }
-        else if(rank==1)
+        else if (rank == 1)
         {
-            value=11;
+            value = 11;
         }
         else
         {
-            value=rank;
+            value = rank;
         }
         return value;
     }
