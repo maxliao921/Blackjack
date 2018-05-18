@@ -29,7 +29,7 @@ public class Hand{
 		int aces = 0;
 		for(int i=0; i< count2; i++)
 		{
-			rank = Hand[i].valueOf();
+			rank = Hand[i].getValue();
 			sum += rank;
 			if( rank == 11)
 			{
@@ -46,7 +46,7 @@ public class Hand{
 	
 	public boolean hasBlackJack()
 	{
-		int total = Hand[0].valueOf() + Hand[1].valueOf();
+		int total = Hand[0].getValue() + Hand[1].getValue();
 		return total ==21;
 	}
 
