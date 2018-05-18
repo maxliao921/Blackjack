@@ -218,7 +218,7 @@ public class BlackjackMain {
     public static void Win()
     {
         System.out.println("Congratulations, you win!");
-        cas h= cash+bet;
+        cash = cash + bet;
         System.out.println("Cash: " + cash);
     }
 
