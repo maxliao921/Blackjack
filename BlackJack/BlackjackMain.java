@@ -23,7 +23,7 @@ public class BlackjackMain {
             // Initialize variables, set bet
             Deck deck = new Deck();
             deck.shuffle();
-            AceCounter=0;
+            AceCounter = 0;
             Dealer dealer = new Dealer(deck);
             List<Card> hand = new ArrayList<>();
             hand.add(deck.drawCard());
