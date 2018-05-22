@@ -66,7 +66,7 @@ public class BlackjackGUI extends JFrame {
 
 	public void displayPlayer(Hand hand)
 	{
-		playerArea.setText("Player:\n"+hand.valueOf()+"\n"+hand);
+		playerArea.setText("Player:\n"+"Money:\n"+"$"+hand.bet()+"\n"+hand.valueOf()+"\n"+hand);
 	}
 
 	public void displayDealer(Hand hand)
