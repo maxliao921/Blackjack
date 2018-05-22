@@ -24,6 +24,7 @@ public class BlackjackMain
 		GUI.setPlayAction(new PlayAction());
 		GUI.setHitAction(new HitAction());
 		GUI.setStandAction(new StandAction());
+		GUI.setBetAction(new BetAction());
 		GUI.enablePlayButton();
 	}
 	
@@ -43,7 +44,7 @@ public class BlackjackMain
 			GUI.displayDealerCard(dealer.getTopCard());
 			if(!player.hasBlackJack() && !dealer.hasBlackJack() && !player.isBusted())
 			{
-				GUI.enableHitAndStandButtons();
+				GUI.enableHitAndStandBetButtons();
 			}
 			if(player.hasBlackJack() || dealer.hasBlackJack() || player.isBusted())
 			{
@@ -69,6 +70,14 @@ public class BlackjackMain
 	}
 	
 	class StandAction implements ActionListener
+	{
+		public void actionPerformed (ActionEvent e)
+		{
+			finishGame();
+		}
+	}
+	
+	class BetAction implements ActionListener
 	{
 		public void actionPerformed (ActionEvent e)
 		{
