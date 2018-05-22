@@ -6,7 +6,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.LinkedList;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class BlackjackMain
 {
@@ -17,6 +16,7 @@ public class BlackjackMain
 	private int hit = 0;
 	public BlackjackGUI GUI;
 	private int stand = 0;
+	public int bet = 1000;
 	
 	public BlackjackMain()
 	{
@@ -81,8 +81,16 @@ public class BlackjackMain
 	{
 		public void actionPerformed (ActionEvent e)
 		{
-			finishGame();
+			if (!player.isBusted() && player.valueOf() != 21)
+			{
+				addBet();
+			}
 		}
+	}
+	
+	private void addBet()
+	{
+		
 	}
 	
 	private void finishGame()
