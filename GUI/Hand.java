@@ -50,6 +50,12 @@ public class Hand{
 		return sum;
 	}
 	
+	public int bet()
+	{
+		int amount = 1000;
+		return amount;
+	}
+	
 	public boolean hasBlackJack()
 	{
 		int total = Hand[0].valueOf() + Hand[1].valueOf();
