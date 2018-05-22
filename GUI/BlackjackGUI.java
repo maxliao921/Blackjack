@@ -6,14 +6,15 @@ import javax.swing.*;
 public class BlackjackGUI extends JFrame {
 	private Container contentPane;
 	private JPanel buttonPanel = new JPanel();
-	private JButton playButton = new JButton("Play ");
-	private JButton hitButton = new JButton("Hit  ");
+	private JButton playButton = new JButton("Play");
+	private JButton hitButton = new JButton("Hit");
 	private JButton standButton = new JButton("Stand");
+	private JButton betButton = new JButton("Bet");
 	private JPanel outputPanel = new JPanel();
 	private JTextArea playerArea = new JTextArea();
 	private JTextArea dealerArea = new JTextArea();
 
-	// Construct frame
+	// Construct window
 	public BlackjackGUI()
 	{
 		contentPane = getContentPane();
@@ -25,12 +26,14 @@ public class BlackjackGUI extends JFrame {
 		buttonPanel.add(playButton, null);
 		buttonPanel.add(hitButton, null);
 		buttonPanel.add(standButton, null);
+		buttonPanel.add(betButton, null);
 		contentPane.add(outputPanel, BorderLayout.CENTER);
 	    outputPanel.setLayout(new FlowLayout());
 	    outputPanel.add(playerArea, null);
 	    outputPanel.add(dealerArea, null);
 	    hitButton.setEnabled(false);
 	    standButton.setEnabled(false);
+	    betButton.setEnabled(false);
 	    playerArea.setText("  ");
 	    dealerArea.setText("  ");
 	    int width = getWidth();
@@ -55,6 +58,11 @@ public class BlackjackGUI extends JFrame {
 	{
 		standButton.addActionListener(listener);
 	}
+	
+	public void setBetAction(ActionListener listener)
+	{
+		betButton.addActionListener(listener);
+	}
 
 	public void displayPlayer(Hand hand)
 	{
@@ -76,11 +84,12 @@ public class BlackjackGUI extends JFrame {
 		playerArea.setText(playerArea.getText()+"\n\n"+outcome);
 	}
 
-	public void enableHitAndStandButtons()
+	public void enableHitAndStandBetButtons()
 	{
 		playButton.setEnabled(false);
 		hitButton.setEnabled(true);
 		standButton.setEnabled(true);
+		betButton.setEnabled(true);
 	}
 
 	public void enablePlayButton()
@@ -88,6 +97,7 @@ public class BlackjackGUI extends JFrame {
 		playButton.setEnabled(true);
 		hitButton.setEnabled(false);
 		standButton.setEnabled(false);
+		betButton.setEnabled(false);
 	}
 
 	static public void main(String[] args)
